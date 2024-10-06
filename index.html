@@ -4,10 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appstore UCerts.io</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Liên kết đến file CSS -->
+    <style>
+        /* Thay đổi chung cho body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Container cho ô tìm kiếm */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Ô tìm kiếm */
+        #searchInput {
+            width: 80%;
+            padding: 10px;
+            border-radius: 20px; /* Bo tròn góc */
+            border: 1px solid #ccc;
+        }
+
+        /* Tiêu đề */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Container chung cho các ứng dụng */
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around; /* Căn đều các ô ứng dụng */
+        }
+
+        /* Mỗi ô ứng dụng */
+        .app-box {
+            flex: 1 1 calc(50% - 20px); /* Mỗi ô ứng dụng chiếm 50% trên máy tính */
+            max-width: calc(50% - 20px);
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px; /* Bo tròn góc của ô ứng dụng */
+        }
+
+        .app-icon {
+            max-width: 80px; /* Kích thước icon */
+            height: auto;
+            border-radius: 10px; /* Bo tròn góc của icon ứng dụng */
+            margin-bottom: 10px;
+        }
+
+        /* Tiêu đề ứng dụng */
+        .app-box h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        /* Thông tin khác */
+        .app-box p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Khi màn hình nhỏ hơn 768px, mỗi dòng chỉ hiển thị 1 ô ứng dụng */
+        @media (max-width: 768px) {
+            .app-box {
+                flex: 1 1 calc(100% - 20px); /* Mỗi ô ứng dụng chiếm toàn bộ chiều rộng trên mobile */
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm ứng dụng...">
+    </div>
+    
+    <h1>Danh sách ứng dụng</h1>
+    
     <div class="app-container" id="appContainer"></div>
 
     <script src="app.js"></script> <!-- Liên kết đến file JavaScript -->
