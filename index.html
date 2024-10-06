@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appstore UCerts.io</title>
     <style>
-        /* Thay đổi chung cho body */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
         }
 
-        /* Container cho ô tìm kiếm */
         .search-container {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        /* Ô tìm kiếm */
         #searchInput {
             width: 80%;
             padding: 10px;
@@ -26,23 +23,20 @@
             border: 1px solid #ccc;
         }
 
-        /* Tiêu đề */
         h1 {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        /* Container chung cho các ứng dụng */
         .app-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: space-around; /* Căn đều các ô ứng dụng */
+            justify-content: space-around;
         }
 
-        /* Mỗi ô ứng dụng */
         .app-box {
-            flex: 1 1 calc(50% - 20px); /* Mỗi ô ứng dụng chiếm 50% trên máy tính */
+            flex: 1 1 calc(50% - 20px);
             max-width: calc(50% - 20px);
             border: 1px solid #ccc;
             padding: 20px;
@@ -52,28 +46,26 @@
         }
 
         .app-icon {
-            max-width: 80px; /* Kích thước icon */
-            height: auto;
-            border-radius: 10px; /* Bo tròn góc của icon ứng dụng */
+            width: 50px; /* Kích thước icon 50x50 */
+            height: 50px;
+            border-radius: 50%; /* Bo tròn góc icon */
             margin-bottom: 10px;
         }
 
-        /* Tiêu đề ứng dụng */
         .app-box h3 {
             font-size: 18px;
             margin: 10px 0;
         }
 
-        /* Thông tin khác */
         .app-box p {
             font-size: 14px;
             color: #555;
+            white-space: pre-wrap; /* Giữ nguyên định dạng xuống dòng */
         }
 
-        /* Khi màn hình nhỏ hơn 768px, mỗi dòng chỉ hiển thị 1 ô ứng dụng */
         @media (max-width: 768px) {
             .app-box {
-                flex: 1 1 calc(100% - 20px); /* Mỗi ô ứng dụng chiếm toàn bộ chiều rộng trên mobile */
+                flex: 1 1 calc(100% - 20px);
                 max-width: 100%;
             }
         }
