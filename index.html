@@ -12,6 +12,16 @@
             background-color: #f4f4f4; /* Màu nền nhẹ */
         }
 
+        .header-container {
+            text-align: center; /* Căn giữa tất cả phần tử trong header */
+            margin-bottom: 20px; /* Khoảng cách dưới cùng */
+        }
+
+        .header-container img {
+            width: 128px; /* Kích thước logo */
+            height: 128px;
+        }
+
         .search-container {
             text-align: center;
             margin-bottom: 20px;
@@ -26,7 +36,42 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin: 10px 0; /* Khoảng cách giữa các tiêu đề */
+        }
+
+        h2 {
+            font-weight: bold; /* Đậm chữ */
+            margin: 5px 0;
+        }
+
+        h3 {
+            font-weight: normal; /* Chữ mảnh */
+            margin: 5px 0;
+        }
+
+        .button-black {
+            background-color: black; /* Nền đen */
+            color: white; /* Chữ trắng */
+            padding: 10px 20px; /* Padding cho nút */
+            border: none; /* Xóa đường viền */
+            border-radius: 5px; /* Bo tròn nhẹ */
+            cursor: pointer; /* Con trỏ khi hover */
+            text-decoration: none; /* Xóa gạch chân */
+            display: inline-block; /* Để giữ kích thước nút */
+            margin-top: 10px; /* Khoảng cách với nội dung bên trên */
+            font-weight: bold; /* Làm đậm chữ */
+        }
+
+        .button-border {
+            border: 2px solid white; /* Viền trắng */
+            background-color: transparent; /* Nền trong suốt */
+            color: white; /* Chữ trắng */
+            padding: 10px 20px; /* Padding cho nút */
+            border-radius: 5px; /* Bo tròn nhẹ */
+            cursor: pointer; /* Con trỏ khi hover */
+            display: inline-block; /* Để giữ kích thước nút */
+            margin-top: 10px; /* Khoảng cách với nội dung bên trên */
+            font-weight: bold; /* Làm đậm chữ */
         }
 
         .app-container {
@@ -98,6 +143,18 @@
     </style>
 </head>
 <body>
+    <div class="header-container">
+        <img src="https://ucerts.io/public/icons/navbar_icon.png" alt="UCerts Logo">
+        <h1>Appstore by UCerts.io</h1>
+        <h2>Giải pháp chứng chỉ Apple chuyên nghiệp</h2>
+        <h3>Nhân bản ứng dụng trên iOS không cần Jailbreak</h3>
+        <a href="https://ucerts.io/vi-VN" class="button-black">Mua chứng chỉ tại đây</a>
+        <a href="https://www.youtube.com/watch?v=6wTpBCrLcDM" class="button-border">
+            <img src="https://img.icons8.com/ios-filled/20/ffffff/youtube-play.png" alt="YouTube Logo" style="vertical-align: middle; margin-right: 5px;">
+            Xem video Hướng Dẫn
+        </a>
+    </div>
+
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Tìm kiếm ứng dụng...">
     </div>
