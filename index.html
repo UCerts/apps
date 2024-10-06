@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f4f4f4; /* Màu nền nhẹ */
         }
 
         .search-container {
@@ -38,14 +39,16 @@
         .app-box {
             border: 1px solid #ccc;
             padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 5px; /* Bo tròn góc nhẹ */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng mạnh hơn */
+            border-radius: 10px; /* Bo tròn góc nhẹ hơn */
             text-align: center;
-            transition: transform 0.2s; /* Hiệu ứng khi hover */
+            background-color: #fff; /* Màu nền trắng */
+            transition: transform 0.2s, box-shadow 0.2s; /* Hiệu ứng khi hover */
         }
 
         .app-box:hover {
-            transform: scale(1.02); /* Tăng kích thước nhẹ khi hover */
+            transform: translateY(-5px); /* Nâng lên nhẹ khi hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Đổ bóng tối hơn khi hover */
         }
 
         .app-icon {
@@ -65,22 +68,25 @@
             color: #555;
             white-space: pre-wrap; /* Giữ nguyên định dạng xuống dòng */
             margin: 5px 0; /* Khoảng cách giữa các dòng */
+            text-align: left; /* Căn lề trái */
         }
 
         .download-btn {
-            background-color: #007BFF; /* Màu nền nút */
+            background-color: #28a745; /* Màu nền nút */
             color: white; /* Màu chữ nút */
-            padding: 10px 15px; /* Padding cho nút */
+            padding: 10px 20px; /* Padding cho nút */
             border: none; /* Xóa đường viền */
             border-radius: 5px; /* Bo tròn nhẹ */
             cursor: pointer; /* Con trỏ khi hover */
             text-decoration: none; /* Xóa gạch chân */
             display: inline-block; /* Để giữ kích thước nút */
             margin-top: 10px; /* Khoảng cách với nội dung bên trên */
+            font-weight: bold; /* Làm đậm chữ */
+            transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
         }
 
         .download-btn:hover {
-            background-color: #0056b3; /* Màu nền khi hover */
+            background-color: #218838; /* Màu nền khi hover */
         }
 
         @media (max-width: 768px) {
