@@ -25,6 +25,7 @@ function displayApps(apps) {
       <p><strong>Version:</strong> ${app.version}</p>
       <p><strong>Developer:</strong> ${app.developerName || 'Unknown'}</p>
       <p><strong>Release Date:</strong> ${app.versionDate}</p>
+      <p><strong>Description:</strong> ${app.localizedDescription}</p>
       <a href="${app.downloadURL}" target="_blank">Download</a>
     `;
 
