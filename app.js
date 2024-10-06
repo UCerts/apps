@@ -1,7 +1,7 @@
 // Fetch JSON từ GitHub và render ra giao diện
 async function fetchAppsData() {
     try {
-        const response = await fetch('https://repo.ucerts.io');
+        const response = await fetch('https://repo.ucerts.io'); // Đường dẫn tới file JSON
         const data = await response.json();
 
         const apps = data.apps; // Lấy danh sách apps từ JSON
@@ -23,7 +23,7 @@ async function fetchAppsData() {
                     <p><strong>Version Date:</strong> ${app.versionDate}</p>
                     <p><strong>Developer:</strong> ${app.developerName || 'N/A'}</p>
                     <p><strong>Description:</strong> ${app.localizedDescription}</p>
-                    <a href="${app.downloadURL}" target="_blank">Tải về</a>
+                    <a href="${app.downloadURL}" class="download-btn" target="_blank">Tải về</a>
                 `;
 
                 container.appendChild(appBox);
