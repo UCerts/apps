@@ -19,7 +19,7 @@
         #searchInput {
             width: 80%;
             padding: 10px;
-            border-radius: 20px; /* Bo tròn góc */
+            border-radius: 10px; /* Bo tròn góc nhẹ */
             border: 1px solid #ccc;
         }
 
@@ -29,26 +29,29 @@
         }
 
         .app-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Hiển thị dạng bảng */
             gap: 20px;
-            justify-content: space-around;
+            justify-items: center; /* Canh giữa nội dung ô */
         }
 
         .app-box {
-            flex: 1 1 calc(50% - 20px);
-            max-width: calc(50% - 20px);
             border: 1px solid #ccc;
             padding: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px; /* Bo tròn góc nhẹ */
             text-align: center;
-            border-radius: 10px; /* Bo tròn góc của ô ứng dụng */
+            transition: transform 0.2s; /* Hiệu ứng khi hover */
+        }
+
+        .app-box:hover {
+            transform: scale(1.02); /* Tăng kích thước nhẹ khi hover */
         }
 
         .app-icon {
             width: 50px; /* Kích thước icon 50x50 */
             height: 50px;
-            border-radius: 50%; /* Bo tròn góc icon */
+            border-radius: 5px; /* Bo tròn nhẹ */
             margin-bottom: 10px;
         }
 
@@ -61,6 +64,23 @@
             font-size: 14px;
             color: #555;
             white-space: pre-wrap; /* Giữ nguyên định dạng xuống dòng */
+            margin: 5px 0; /* Khoảng cách giữa các dòng */
+        }
+
+        .download-btn {
+            background-color: #007BFF; /* Màu nền nút */
+            color: white; /* Màu chữ nút */
+            padding: 10px 15px; /* Padding cho nút */
+            border: none; /* Xóa đường viền */
+            border-radius: 5px; /* Bo tròn nhẹ */
+            cursor: pointer; /* Con trỏ khi hover */
+            text-decoration: none; /* Xóa gạch chân */
+            display: inline-block; /* Để giữ kích thước nút */
+            margin-top: 10px; /* Khoảng cách với nội dung bên trên */
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3; /* Màu nền khi hover */
         }
 
         @media (max-width: 768px) {
