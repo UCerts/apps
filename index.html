@@ -60,6 +60,11 @@
             display: inline-block; /* Để giữ kích thước nút */
             margin-top: 10px; /* Khoảng cách với nội dung bên trên */
             font-weight: bold; /* Làm đậm chữ */
+            transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+        }
+
+        .button-black:hover {
+            background-color: #444; /* Màu nền khi hover */
         }
 
         .app-container {
@@ -129,13 +134,14 @@
             gap: 10px; /* Khoảng cách giữa icon và chữ */
             border: 2px solid black; /* Viền đen */
             border-radius: 30px; /* Bo tròn góc */
-            padding: 8px 16px; /* Padding cho nút ngắn hơn */
+            padding: 5px 15px; /* Điều chỉnh padding cho nút */
             background-color: transparent; /* Nền trong suốt */
             color: black; /* Chữ đen */
             text-decoration: none; /* Xóa gạch chân */
             transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu */
             margin-top: 10px; /* Khoảng cách trên cùng */
             margin-bottom: 10px; /* Khoảng cách dưới cùng */
+            min-width: 160px; /* Chiều rộng tối thiểu cho nút */
         }
 
         .youtube-button:hover {
@@ -159,11 +165,11 @@
 </head>
 <body>
     <div class="header-container">
-        <img src="https://i.imgur.com/iZ2V4IP.png" alt="UCerts Logo">
+        <img src="https://ucerts.io/public/icons/navbar_icon.png" alt="UCerts Logo">
         <h1>Appstore by UCerts.io</h1>
         <h2>Giải pháp chứng chỉ Apple chuyên nghiệp</h2>
         <h3>Nhân bản ứng dụng trên iOS không cần Jailbreak</h3>
-        <a href="https://ucerts.io/vi-VN" class="button-black">Mua chứng chỉ tại đây</a>
+        <a href="#" class="button-black" id="purchaseButton">Mua chứng chỉ tại đây</a>
         <div style="margin: 10px 0;"> <!-- Khoảng cách giữa các nút -->
             <a target="_blank" class="youtube-button" href="https://www.youtube.com/watch?v=6wTpBCrLcDM">
                 <svg class="youtube-icon" stroke="currentColor" fill="#ff0909" stroke-width="0" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
@@ -178,11 +184,33 @@
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Tìm kiếm ứng dụng...">
     </div>
-    
-    <h1>Danh sách ứng dụng</h1>
-    
-    <div class="app-container" id="appContainer"></div>
 
-    <script src="app.js"></script> <!-- Chèn tệp JS -->
+    <div class="app-container">
+        <div class="app-box">
+            <img src="https://ucerts.io/public/icons/first.png" alt="Icon App 1" class="app-icon">
+            <h3>App 1</h3>
+            <p>Thông tin về ứng dụng 1.</p>
+            <a href="#" class="download-btn">Tải về</a>
+        </div>
+        <div class="app-box">
+            <img src="https://ucerts.io/public/icons/second.png" alt="Icon App 2" class="app-icon">
+            <h3>App 2</h3>
+            <p>Thông tin về ứng dụng 2.</p>
+            <a href="#" class="download-btn">Tải về</a>
+        </div>
+        <!-- Thêm nhiều ứng dụng khác nếu cần -->
+    </div>
+
+    <script>
+        // Hiệu ứng chờ khi bấm nút mua chứng chỉ
+        document.getElementById('purchaseButton').addEventListener('click', function() {
+            const button = this;
+            button.innerText = "Đang chuyển trang..."; // Thay đổi văn bản nút
+            button.disabled = true; // Vô hiệu hóa nút
+            setTimeout(function() {
+                window.location.href = "https://ucerts.io/mua-chung-chi"; // Thay đổi trang
+            }, 5000); // Chờ 5 giây
+        });
+    </script>
 </body>
 </html>
