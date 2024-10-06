@@ -1,85 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Store by UCerts.io</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f0f0f0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appstore UCerts.io</title>
+    <style>
+        /* Container chung cho các ứng dụng */
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
 
-    .search-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
+        /* Mỗi ô ứng dụng */
+        .app-box {
+            flex: 1 1 calc(100% - 20px); /* Mặc định chiếm toàn bộ chiều rộng trên mobile */
+            max-width: 100%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-    .search-container input {
-      width: 50%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
+        .app-box img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
 
-    .app-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+        .app-box h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
 
-    .app-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 15px;
-      width: 300px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+        .app-box p {
+            font-size: 14px;
+            color: #555;
+        }
 
-    .app-card img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .app-card h2 {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-
-    .app-card p {
-      font-size: 14px;
-      color: #666;
-      margin: 5px 0;
-    }
-
-    .app-card a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-
-    .app-card a:hover {
-      background-color: #0056b3;
-    }
-  </style>
+        /* Khi màn hình lớn hơn 768px, mỗi dòng hiển thị 2 ứng dụng */
+        @media (min-width: 768px) {
+            .app-box {
+                flex: 1 1 calc(50% - 20px); /* Mỗi ứng dụng chiếm 50% */
+                max-width: calc(50% - 20px);
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search for an app...">
-  </div>
-  <div id="appContainer" class="app-container"></div>
 
-  <script src="app.js"></script>
+    <div class="app-container" id="appContainer"></div>
+
+    <script>
+        // Fetch JSON từ GitHub và render ra giao diện
+        async function fetchAppsData() {
+            try {
+                const response = await fetch('https://repo.ucerts.io');
+                const data = await response.json();
+
+                const apps = data.apps; // Lấy danh sách apps từ JSON
+                const container = document.getElementById('appContainer');
+
+                // Lặp qua từng app và tạo HTML
+                apps.forEach(app => {
+                    const appBox = document.createElement('div');
+                    appBox.className = 'app-box';
+
+                    appBox.innerHTML = `
+                        <img src="${app.iconURL}" alt="${app.name} Icon">
+                        <h3>${app.name}</h3>
+                        <p><strong>Bundle ID:</strong> ${app.bundleID}</p>
+                        <p><strong>Version:</strong> ${app.version}</p>
+                        <p><strong>Version Date:</strong> ${app.versionDate}</p>
+                        <p><strong>Developer:</strong> ${app.developerName || 'N/A'}</p>
+                        <p><strong>Description:</strong> ${app.localizedDescription}</p>
+                        <a href="${app.downloadURL}" target="_blank">Tải về</a>
+                    `;
+
+                    container.appendChild(appBox);
+                });
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu:', error);
+            }
+        }
+
+        // Gọi hàm để fetch và hiển thị dữ liệu
+        fetchAppsData();
+    </script>
+
 </body>
 </html>
