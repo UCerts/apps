@@ -4,7 +4,7 @@ Chào mừng bạn đến với UCerts! Truy cập liên kết dưới đây đ�
 
 Welcome to UCerts! Visit the link below to explore the applications we support, including exciting features and modded games:
 
-[**Khám Phá Ứng Dụng UCerts**](https://ucerts.github.io/apps/) / [**Explore UCerts Apps**](https://ucerts.github.io/apps/)
+[**Khám Phá Kho Ứng Dụng UCerts hỗ trợ tại đây**](https://ucerts.github.io/apps/) / [**Explore UCerts Apps**](https://ucerts.github.io/apps/)
 
 ## Hướng Dẫn Mua Chứng Chỉ và Cài Đặt Ứng Dụng / Certificate Purchase and App Installation Guide
 
