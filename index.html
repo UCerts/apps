@@ -11,11 +11,15 @@
     }
     .search-bar {
       margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
     }
     .search-bar input {
-      width: 100%;
+      width: 50%; /* Chiếm một nửa trang */
       padding: 10px;
       font-size: 16px;
+      border-radius: 15px; /* Bo tròn */
+      border: 1px solid #ddd;
     }
     .app {
       border: 1px solid #ddd;
@@ -66,33 +70,18 @@
   <div id="app-list"></div>
 
   <script>
-    // Dữ liệu JSON
-    const appsData = [
-      {
-        "name": "Snapchat: Chat với bạn bè",
-        "type": 1,
-        "bundleID": "com.toyopagroup.picaboo",
-        "version": "13.9.0",
-        "versionDate": "2024-09-29",
-        "size": 112000000,
-        "downloadURL": "https://github.com/repofree830/repoucerts/releases/download/repo/Snapchat_13.9.0_decrypted.ipa",
-        "developerName": "𝗔𝗱𝗺𝗶𝗻 𝗨𝗖𝗲𝗿𝘁𝘀.𝗶𝗼",
-        "localizedDescription": "Snapchat là cách nhanh chóng và thú vị để chia sẻ khoảnh khắc với bạn bè và gia đình.",
-        "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3a/91/07/3a9107db-4c42-a961-c373-e8b8b49e9682/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/217x0w.webp"
-      },
-      {
-        "name": "Threads",
-        "type": 1,
-        "bundleID": "com.burbn.barcelona",
-        "version": "350.0.0",
-        "versionDate": "2024-09-29",
-        "size": 41300000,
-        "downloadURL": "https://github.com/repofree830/repoucerts/releases/download/repo/Threads_350.0.0_decrypted.ipa",
-        "developerName": "𝗔𝗱𝗺𝗶𝗻 𝗨𝗖𝗲𝗿𝘁𝘀.𝗶𝗼",
-        "localizedDescription": "Say more with Threads — Instagram’s text-based conversation app.",
-        "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b1/45/39/b1453933-5ac1-7d17-9bf8-1d4788c3ef2f/Prod-0-0-1x_U007emarketing-0-8-0-85-220.png/246x0w.webp"
-      }
-    ];
+    // Fetch JSON từ UCetrts
+      async function fetchAppsData() {
+    try {
+      const response = await fetch('https://repo.ucerts.io'); // Đường dẫn đến JSON file của bạn
+      const appsData = await response.json(); // Chuyển đổi dữ liệu thành JSON
+      return appsData;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return [];
+    }
+  }
+
 
     // Render App List
     function renderAppList(apps) {
@@ -117,17 +106,22 @@
     }
 
     // Search Functionality
-    function searchApps(event) {
+    function searchApps(event, apps) {
       const searchTerm = event.target.value.toLowerCase();
-      const filteredApps = appsData.filter(app => app.name.toLowerCase().includes(searchTerm));
+      const filteredApps = apps.filter(app => app.name.toLowerCase().includes(searchTerm));
       renderAppList(filteredApps);
     }
 
-    // Initial Rendering
-    renderAppList(appsData);
+    // Khởi động
+    async function init() {
+      const appsData = await fetchAppsData();
+      renderAppList(appsData);
 
-    // Add Search Event Listener
-    document.getElementById('search-input').addEventListener('input', searchApps);
+      // Add Search Event Listener
+      document.getElementById('search-input').addEventListener('input', (event) => searchApps(event, appsData));
+    }
+
+    init();
   </script>
 
 </body>
