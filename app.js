@@ -13,7 +13,7 @@ async function fetchAppsData() {
             appBox.className = 'app-box';
 
             appBox.innerHTML = `
-                <img src="${app.iconURL}" alt="${app.name} Icon">
+                <img src="${app.iconURL}" alt="${app.name} Icon" class="app-icon">
                 <h3>${app.name}</h3>
                 <p><strong>Bundle ID:</strong> ${app.bundleID}</p>
                 <p><strong>Version:</strong> ${app.version}</p>
