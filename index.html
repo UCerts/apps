@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ứng dụng Demo</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ứng dụng từ JSON</title>
+  <style>
+    .app {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .app img {
+      max-width: 50px;
+      margin-right: 15px;
+    }
+    .app-details {
+      flex-grow: 1;
+    }
+  </style>
 </head>
 <body>
-    <h1>Danh sách Ứng dụng</h1>
-    <div id="app-list"></div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+  <h1>Danh sách ứng dụng</h1>
+  <div id="app-list"></div>
+
+  <script>
+    // Fetch the JSON file from your GitHub repository
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        const appList = document.getElement
