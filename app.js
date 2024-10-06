@@ -6,24 +6,38 @@ async function fetchAppsData() {
 
         const apps = data.apps; // Lấy danh sách apps từ JSON
         const container = document.getElementById('appContainer');
+        const searchInput = document.getElementById('searchInput');
 
-        // Lặp qua từng app và tạo HTML
-        apps.forEach(app => {
-            const appBox = document.createElement('div');
-            appBox.className = 'app-box';
+        // Hàm hiển thị ứng dụng
+        const displayApps = (apps) => {
+            container.innerHTML = ''; // Xóa nội dung hiện tại
+            apps.forEach(app => {
+                const appBox = document.createElement('div');
+                appBox.className = 'app-box';
 
-            appBox.innerHTML = `
-                <img src="${app.iconURL}" alt="${app.name} Icon" class="app-icon">
-                <h3>${app.name}</h3>
-                <p><strong>Bundle ID:</strong> ${app.bundleID}</p>
-                <p><strong>Version:</strong> ${app.version}</p>
-                <p><strong>Version Date:</strong> ${app.versionDate}</p>
-                <p><strong>Developer:</strong> ${app.developerName || 'N/A'}</p>
-                <p><strong>Description:</strong> ${app.localizedDescription}</p>
-                <a href="${app.downloadURL}" target="_blank">Tải về</a>
-            `;
+                appBox.innerHTML = `
+                    <img src="${app.iconURL}" alt="${app.name} Icon" class="app-icon">
+                    <h3>${app.name}</h3>
+                    <p><strong>Bundle ID:</strong> ${app.bundleID}</p>
+                    <p><strong>Version:</strong> ${app.version}</p>
+                    <p><strong>Version Date:</strong> ${app.versionDate}</p>
+                    <p><strong>Developer:</strong> ${app.developerName || 'N/A'}</p>
+                    <p><strong>Description:</strong> ${app.localizedDescription}</p>
+                    <a href="${app.downloadURL}" target="_blank">Tải về</a>
+                `;
 
-            container.appendChild(appBox);
+                container.appendChild(appBox);
+            });
+        };
+
+        // Hiển thị tất cả ứng dụng ban đầu
+        displayApps(apps);
+
+        // Thêm sự kiện tìm kiếm
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredApps = apps.filter(app => app.name.toLowerCase().includes(searchTerm));
+            displayApps(filteredApps); // Hiển thị ứng dụng đã lọc
         });
     } catch (error) {
         console.error('Lỗi khi tải dữ liệu:', error);
